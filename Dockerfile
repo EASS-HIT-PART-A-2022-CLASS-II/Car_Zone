@@ -1,4 +1,4 @@
-FROM python:3.11.1
+FROM python:3.8.10
 
 COPY ./src /app/src
 COPY ./requierments.txt /app
@@ -6,6 +6,7 @@ COPY ./requierments.txt /app
 WORKDIR /app
 
 RUN pip3 install -r requierments.txt
+
 
 EXPOSE 8000
 
