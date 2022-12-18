@@ -2,8 +2,8 @@ from pydantic import BaseModel
 from typing import Optional
 
 class carPost(BaseModel):
-    manifacture: Optional[int]
-    modle: Optional[int]
+    manifacture: Optional[str]
+    modle: Optional[str]
 
 class carRes(BaseModel):
     id : int

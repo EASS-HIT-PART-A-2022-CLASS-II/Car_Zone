@@ -23,12 +23,12 @@ def tst(car_id:int):
             return i
     return json_obj 
 
-@app.post("/tstpost",response_model=carRes,response_model_exclude_unset=True)
+@app.post("/getcarsbymanyfacture",response_model=carRes,response_model_exclude_unset=True)
 def getprice(car:carPost):
     res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
     json_obj=res.json()
     for i in json_obj['result']['records']:
-        if i['tozeret_cd']==car.manifacture & i['degem_cd']==car.modle:
+        if ((i['tozeret_cd']==car.manifacture) & (i['degem_cd']==car.modle)):
             carRes.id=i['_id']
             carRes.mispar_rechev=i['mispar_rechev']
             return carRes
@@ -48,7 +48,7 @@ def getcarcolor(car_num:int):
            carRes.error_code="ok"
            return carRes
     carRes.id=0000
-    carRes.error_code="ok"
+    carRes.error_code="car not found"
     return carRes
    
 
