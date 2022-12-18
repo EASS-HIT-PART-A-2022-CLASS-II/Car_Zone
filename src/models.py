@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional ,List
 
 class carPost(BaseModel):
     manifacture: Optional[str]
@@ -20,7 +20,11 @@ class carRes(BaseModel):
     class Config:
         orm_mode = True
 
-    
+class listOfCarRes(BaseModel):
+    id : int
+    car : Optional[List[carRes]]
+
+
 
 
 

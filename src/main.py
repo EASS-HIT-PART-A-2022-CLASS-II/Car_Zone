@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from urllib import request
-from .models import *
+from src.models import *
 import requests
 import pytest
 
@@ -23,15 +23,33 @@ def tst(car_id:int):
             return i
     return json_obj 
 
-@app.post("/getcarsbymanyfacture",response_model=carRes,response_model_exclude_unset=True)
+@app.post("/getcarsbymanyfacture",response_model=listOfCarRes,response_model_exclude_unset=True)
 def getprice(car:carPost):
     res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
     json_obj=res.json()
     for i in json_obj['result']['records']:
+        j=0
         if ((i['tozeret_cd']==car.manifacture) & (i['degem_cd']==car.modle)):
-            carRes.id=i['_id']
-            carRes.mispar_rechev=i['mispar_rechev']
-            return carRes
+            j=j+1
+            cars = listOfCarRes(
+                id=j,
+                car=[
+                    carRes(
+                        id=i['_id'],
+                        mispar_rechev=i['mispar_rechev'],
+                        sug_degem ="",
+                        degem_cd ="",
+                        degem_nm ="",
+                        tozeret_cd ="",
+                        tozeret_nm ="",
+                        tzeva_cd ="",
+                        tzeva_rechev ="",
+                        moed_aliya_lakvish ="",
+                        error_code=""
+                    )
+                ]
+            )
+            return cars
     carRes.error_code="500"
     carRes.id=0000
     return carRes
