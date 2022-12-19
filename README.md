@@ -9,15 +9,16 @@ Israel dmv data
 :large_orange_diamond: Get car color by entering car number <br />
 
 ## Instractions
+### Pre-requisites
+:large_orange_diamond:  Make sure you have docker installed on your machine
+### Instructions
 
-### Dependencies
-
-* Open CMD/Terminal inside a desired folder and run the following command: <br />
-  <clipboard-copy> git clone https://github.com/EASS-HIT-PART-A-2022-CLASS-II/Reut_Ohayon.git </clipboard-copy> <br />
-* Then go inside the notes-app folder: <br />
+:large_orange_diamond: Open CMD/Terminal inside a desired folder and run the following command: <br />
+  <clipboard-copy git clone https://github.com/EASS-HIT-PART-A-2022-CLASS-II/Reut_Ohayon.git> <br />
+:large_orange_diamond: Then go inside the notes-app folder: <br />
   cd Reut_Ohayon <br />
-* To start the app, enter the following command: <br />
+:large_orange_diamond: To start the app, enter the following command: <br />
   docker compose up <br />
-* now all you have to do is to open your browser and type: <br />
+:large_orange_diamond: now all you have to do is to open your browser and type: <br />
   http://localhost:3000/  
   
