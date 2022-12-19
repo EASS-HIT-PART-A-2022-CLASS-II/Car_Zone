@@ -8,12 +8,16 @@ Israel dmv data
 :large_orange_diamond: Post manifacture and model and get cars with that same data
 :large_orange_diamond: Get car color by entering car number
 
-## Getting Started
+## Instractions
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* Open CMD/Terminal inside a desired folder and run the following command:
+  git clone https://github.com/EASS-HIT-PART-A-2022-CLASS-II/Reut_Ohayon.git
+* Then go inside the notes-app folder:
+  cd Reut_Ohayon
+* To start the app, enter the following command:
+  docker compose up
 
 
 ## Acknowledgments
