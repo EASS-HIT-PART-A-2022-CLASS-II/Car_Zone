@@ -4,20 +4,20 @@ Israel dmv data
 
 ## Features
 
-:large_orange_diamond: Get all Isarel dmv cars
-:large_orange_diamond: Post manifacture and model and get cars with that same data
-:large_orange_diamond: Get car color by entering car number
+:large_orange_diamond: Get all Isarel dmv cars <br />
+:large_orange_diamond: Post manifacture and model and get cars with that same data <br />
+:large_orange_diamond: Get car color by entering car number <br />
 
 ## Instractions
 
 ### Dependencies
 
-* Open CMD/Terminal inside a desired folder and run the following command:
-  git clone https://github.com/EASS-HIT-PART-A-2022-CLASS-II/Reut_Ohayon.git
-* Then go inside the notes-app folder:
-  cd Reut_Ohayon
-* To start the app, enter the following command:
-  docker compose up
+* Open CMD/Terminal inside a desired folder and run the following command: <br />
+  git clone https://github.com/EASS-HIT-PART-A-2022-CLASS-II/Reut_Ohayon.git <br />
+* Then go inside the notes-app folder: <br />
+  cd Reut_Ohayon <br />
+* To start the app, enter the following command: <br />
+  docker compose up <br />
 
 
 ## Acknowledgments
