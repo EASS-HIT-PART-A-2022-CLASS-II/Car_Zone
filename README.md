@@ -4,9 +4,9 @@ Israel dmv data
 
 ## Features
 
-Markup : Code appears between colons :large_orange_diamond: Get all Isarel dmv cars
-Markup : Code appears between colons :large_orange_diamond: Post manifacture and model and get cars with that same data
-Markup : Code appears between colons :large_orange_diamond: Get car color by entering car number
+:large_orange_diamond: Get all Isarel dmv cars
+:large_orange_diamond: Post manifacture and model and get cars with that same data
+:large_orange_diamond: Get car color by entering car number
 
 ## Getting Started
 
