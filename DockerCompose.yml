@@ -1,0 +1,15 @@
+version: "3.10"
+services:
+  backend:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: car-zone
+    networks:
+      - cars-app-network
+
+networks:
+  cars-app-network:
+    driver: bridge
