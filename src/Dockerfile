@@ -1,10 +1,10 @@
 FROM python:3.10.0
 
-COPY ./src /app/src
-COPY ./requierments.txt /app
-
 WORKDIR /app/src
 WORKDIR /app
+
+COPY ./src /app/src
+COPY ./requierments.txt /app
 
 RUN pip3 install -r requierments.txt
 
