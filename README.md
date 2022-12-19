@@ -15,7 +15,7 @@ Israel dmv data
 
 :large_orange_diamond: Open CMD/Terminal inside a desired folder and run the following command: <br />
     git clone https://github.com/EASS-HIT-PART-A-2022-CLASS-II/Car_Zone.git <br />
-:large_orange_diamond: Then go inside the notes-app folder: <br />
+:large_orange_diamond: Then go inside the Car_Zone folder: <br />
     cd Car_Zone <br />
 :large_orange_diamond: To start the app, enter the following command: <br />
     docker compose up <br />
