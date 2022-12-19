@@ -1,30 +1,35 @@
 import uvicorn
 from fastapi import FastAPI
-from urllib import request
 from src.models import *
 import requests
-import pytest
 
 app = FastAPI()
 
-
+''' TBD
+@app.get("/gatallcars",response_model=listOfCarRes,response_model_exclude_unset=True)
+def gatallcars():
+    res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
+    json_obj=res.json()
+    listOfCars : List[carRes] = [carRes(**car) for car in json_obj['result']['records']]
+    return listOfCars #json_obj['result']['records']
+'''
 @app.get("/gatallcars")
 def gatallcars():
     res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
     json_obj=res.json()
     return json_obj['result']['records']
 
-@app.get("/tst/{car_id}")
-def tst(car_id:int):
+''' TBD
+@app.post("/getcarsby",response_model=listOfCarRes,response_model_exclude_unset=True)
+def getprice(car:carReq):
     res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
     json_obj=res.json()
-    for i in json_obj['result']['records']:
-        if i['_id']==car_id:
-            return i
-    return json_obj 
+    listOfCars : List[carRes] = [carRes(**car) for car in json_obj]
+    return listOfCars
+'''
 
 @app.post("/getcarsbymanyfacture",response_model=listOfCarRes,response_model_exclude_unset=True)
-def getprice(car:carPost):
+def getlist(car:carReq):
     res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
     json_obj=res.json()
     for i in json_obj['result']['records']:
@@ -33,25 +38,29 @@ def getprice(car:carPost):
             j=j+1
             cars = listOfCarRes(
                 id=j,
+                error_code=200,
+                error_massage="OK",
                 car=[
                     carRes(
                         id=i['_id'],
                         mispar_rechev=i['mispar_rechev'],
-                        sug_degem ="",
-                        degem_cd ="",
-                        degem_nm ="",
-                        tozeret_cd ="",
-                        tozeret_nm ="",
-                        tzeva_cd ="",
-                        tzeva_rechev ="",
-                        moed_aliya_lakvish ="",
-                        error_code=""
+                        sug_degem =i['sug_degem'],
+                        degem_nm =i['degem_nm'],
+                        tozeret_nm =i['tozeret_nm'],
+                        tzeva_rechev =i['tzeva_rechev'],
+                        moed_aliya_lakvish =i['moed_aliya_lakvish'],
+                        error_code=200,
+                        error_massage="OK"
                     )
                 ]
             )
             return cars
-    carRes.error_code="500"
-    carRes.id=0000
+    cars = listOfCarRes(
+                id=000,
+                error_code=500,
+                error_massage="OK",
+                car=[] 
+    )
     return carRes
 
 
@@ -59,17 +68,18 @@ def getprice(car:carPost):
 def getcarcolor(car_num:int):
     res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
     json_obj=res.json()
+    carRes.tzeva_rechev=""
     for i in json_obj['result']['records']:
         if i['mispar_rechev']==car_num:
            carRes.id=i['_id']
            carRes.tzeva_rechev=i['tzeva_rechev']
-           carRes.error_code="ok"
+           carRes.error_code=200
+           carRes.error_massage="OK"
            return carRes
     carRes.id=0000
-    carRes.error_code="car not found"
+    carRes.error_code=500
+    carRes.error_massage="car not found"
     return carRes
-   
-
 
 if __name__ == "__main__":
     uvicorn.run("main:app", port=8000, reload=True)
