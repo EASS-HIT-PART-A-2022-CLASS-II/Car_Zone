@@ -3,7 +3,6 @@ import streamlit as st
 from streamlit import sidebar as sts
 import json
 import pandas as pd
-from ..src.models import *
 
 def get_all_cars():
   response =requests.get(f"http://localhost:8000/gatallcars")
@@ -15,17 +14,10 @@ def get_cars_by_manufacturer(manifacture: str, modle: str):
     return response.json()
 
 def get_car_color(car_num):
-  # Send a GET request to your FastAPI endpoint
-  response = requests.get(f"http://localhost:8000/getcarcolor/{car_num}")
-  # Convert the response to a Python dictionary
+  response = requests.get("http://localhost:8000/getcarcolor/{car_num}")
   data = response.json()
   return data
 
-
-#manufacturer_input = st.sidebar.selectbox("Select Manufacturer", manufacturer_options)
-#model_input = st.sidebar.text_input("Enter Model")
-
-#car_number_input = st.sidebar.text_input("Enter Car Number")
 def main():
     sts.title("Car Zone")
 
@@ -43,20 +35,27 @@ def main():
       manifacture = st.sidebar.text_input("Manifacture")
       modle = st.sidebar.text_input("Modle")
       car = get_cars_by_manufacturer(manifacture,modle)
+    
+    color_data = sts.button("Enter car")
+    if color_button:
+      color=get_car_color(color_data)
+      st.json(color)
 
-    if st.sidebar.button("tst"):
-      car= st.text_input("Car number")
-      if st.button("Get color"):
-        data = get_car_color(car)
-        if data is not None:
-        # If the error code is 200, display the car color
-          if data.error_code == 200:
-            st.write(f"Color: {data.tzeva_rechev}")
-          else:
-            # If the error code is not 200, display an error message
-            st.write("Error: car not found")
+    if st.sidebar.button("Get data from backend"):
+      carinput = st.text_input("Entre car number")
+      if carinput:
+        car = get_car_color(int(carinput))
+
+        # Check the status code of the response
+        if car.status_code == 200:
+          # If the status code is 200, get the data from the response
+          data = car.json()
+
+          # Display the data in the frontend
+          st.write(data)
         else:
-          st.write("Error: response is None")
+          # If the status code is not 200, display an error message
+          st.write("Error: failed to get data from backend")
         #for item in data:
         #  for key, value in item.items():
         #    if key == "_id":
