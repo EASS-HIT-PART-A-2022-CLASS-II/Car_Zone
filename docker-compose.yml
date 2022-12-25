@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    container_name: car-zone
+    container_name: car-zone-backend
     networks:
       - cars-app-network
 
