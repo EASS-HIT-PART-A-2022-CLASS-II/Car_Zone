@@ -32,8 +32,14 @@ def main():
       st.dataframe(df)
 
   elif manufacturer_button:
-    manifacture = st.sidebar.text_input("Manifacture")
-    modle = st.sidebar.text_input("Modle")#    car = get_cars_by_manufacturer(manifacture,modle)
+    if "manifacture" not in st.session_state:
+        st.session_state.manifacture = "0312"
+        st.session_state.modle ="0014"
+    st.button(
+        "Get car",
+        on_click=get_car_by,
+        args=([st.session_state.manifacture + " " + st.session_state.modle]),
+    ) 
 
   elif st.sidebar.button("Get data from backend"):
       if "car" not in st.session_state:
@@ -43,6 +49,20 @@ def main():
         on_click=get_color(st.session_state.car),
       )
     
+def get_car_by(car):
+  with st.form(key="test", clear_on_submit=True):
+        col1, col2 = st.columns(2)
+        manifacture = col1.text_input("Manifacture", car.split()[0], key="manifacture")
+        modle = col2.text_input("Modle", car.split()[-1], key="modle")
+        submit = st.form_submit_button(
+            "Submit", on_click=show_car
+        )
+
+def show_car():
+    car = get_cars_by_manufacturer(st.session_state.manifacture,st.session_state.modle)
+    if car:
+      st.json(car)
+
 
 def get_color(car_num):
       with st.form(key="test", clear_on_submit=True):
