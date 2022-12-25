@@ -3,7 +3,7 @@ FROM python:3.10.0
 WORKDIR /app/src
 WORKDIR /app
 
-COPY ./src /app/src
+COPY . /app/src
 COPY ./requierments.txt /app
 
 RUN pip3 install -r requierments.txt
