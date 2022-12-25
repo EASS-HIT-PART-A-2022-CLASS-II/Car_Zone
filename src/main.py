@@ -65,12 +65,12 @@ def getlist(car:carReq):
 
 
 @app.get("/getcarcolor/{car_num}",response_model=carRes,response_model_exclude_unset=True)
-def getcarcolor(car_num:int):
+def getcarcolor(car_num:str):
     res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
     json_obj=res.json()
     carRes.tzeva_rechev=""
     for i in json_obj['result']['records']:
-        if i['mispar_rechev']==car_num:
+        if i['mispar_rechev']==int(car_num):
            carRes.id=i['_id']
            carRes.tzeva_rechev=i['tzeva_rechev']
            carRes.error_code=200

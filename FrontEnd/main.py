@@ -15,56 +15,52 @@ def get_cars_by_manufacturer(manifacture: str, modle: str):
 
 def get_car_color(car_num):
   response = requests.get("http://localhost:8000/getcarcolor/{car_num}")
-  data = response.json()
-  return data
+  return response.json()
 
 def main():
-    sts.title("Car Zone")
+  sts.title("Car Zone")
 
-    all_cars_button = sts.button("Get All Cars")
-    manufacturer_button = sts.button("Get Cars by Manufacturer")
-    color_button = sts.button("Get Car Color")
+  all_cars_button = sts.button("Get All Cars")
+  manufacturer_button = sts.button("Get Cars by Manufacturer")
+  #color_button = sts.button("Get Car Color")
 
-    if all_cars_button:
-        all = get_all_cars()
-        jsonstr =json.dumps(all)
-        data = json.loads(jsonstr)
-        df = pd.DataFrame(data)
-        st.dataframe(df)
-    if manufacturer_button:
-      manifacture = st.sidebar.text_input("Manifacture")
-      modle = st.sidebar.text_input("Modle")
-      car = get_cars_by_manufacturer(manifacture,modle)
+  if all_cars_button:
+      all = get_all_cars()
+      jsonstr =json.dumps(all)
+      data = json.loads(jsonstr)
+      df = pd.DataFrame(data)
+      st.dataframe(df)
+
+  elif manufacturer_button:
+    manifacture = st.sidebar.text_input("Manifacture")
+    modle = st.sidebar.text_input("Modle")#    car = get_cars_by_manufacturer(manifacture,modle)
+
+  elif st.sidebar.button("Get data from backend"):
+      if "car" not in st.session_state:
+        st.session_state.car = "4284078"
+      st.button(
+        "Get color",
+        on_click=get_color(st.session_state.car),
+      )
     
-    color_data = sts.button("Enter car")
-    if color_button:
-      color=get_car_color(color_data)
-      st.json(color)
 
-    if st.sidebar.button("Get data from backend"):
-      carinput = st.text_input("Entre car number")
-      if carinput:
-        car = get_car_color(int(carinput))
+def get_color(car_num):
+      with st.form(key="test", clear_on_submit=True):
+        col1,col2 = st.columns(2)
+        carcolor = col1.text_input("Enter car number", car_num, key="car")
+        submit = st.form_submit_button(
+            "Submit", on_click=show_color
+        )
+        
 
-        # Check the status code of the response
-        if car.status_code == 200:
-          # If the status code is 200, get the data from the response
-          data = car.json()
-
-          # Display the data in the frontend
-          st.write(data)
-        else:
-          # If the status code is not 200, display an error message
-          st.write("Error: failed to get data from backend")
-        #for item in data:
-        #  for key, value in item.items():
-        #    if key == "_id":
-        #      key = "Id"
-        #    if key == "mispar_rechev":
-        #      key = "Car Number"
-        #    st.write(key, value)
-
+def show_color():
+  st.write(st.session_state.car)
+  entercar=int(st.session_state.car)+0
+  st.write(type(entercar))
+  res=get_car_color(entercar)
+  st.json(res)
 
 
 if __name__ == "__main__":
-  main()
+    main()
+
