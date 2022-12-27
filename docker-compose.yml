@@ -9,6 +9,11 @@ services:
     container_name: car-zone-backend
     networks:
       - cars-app-network
+  frontend:
+    build: .
+    ports:
+      - 8000:8000
+    command: streamlit run main.py
 
 networks:
   cars-app-network:

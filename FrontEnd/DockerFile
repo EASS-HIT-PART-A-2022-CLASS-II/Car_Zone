@@ -1,0 +1,11 @@
+FROM python:3.10.0
+
+WORKDIR /app/FrontEnd
+
+COPY . /app/FrontEnd
+
+RUN pip install requests streamlit pandas
+
+EXPOSE 8000
+
+CMD ["streamlit", "run", "main.py"]
