@@ -17,9 +17,10 @@ def get_car_color(car_num:str):
   response = requests.get(f"http://localhost:8000/getcarcolor/{car_num}")
   return response.json()
 
-def main():
-  sts.title("Car Zone")
 
+
+def main():
+    
   all_cars_button = sts.button("Get All Cars")
   manufacturer_button = sts.button("Get Cars by Manufacturer and modle")
   color_button = sts.button("Get Car Color by car number")
@@ -33,8 +34,8 @@ def main():
 
   elif manufacturer_button:
     if "manifacture" not in st.session_state:
-        st.session_state.manifacture = "0312"
-        st.session_state.modle ="0014"
+        st.session_state.manifacture = "0413"
+        st.session_state.modle ="0871"
     st.button(
         "Get car",
         on_click=get_car_by,
@@ -61,8 +62,11 @@ def get_car_by(car):
 def show_car():
     car = get_cars_by_manufacturer(st.session_state.manifacture,st.session_state.modle)
     if car['car'][0]['error_code']:
-      st.write(f"{car['car'][0]['mispar_rechev']}")
-      st.json(car)
+      jsonstr =json.dumps(car['car'])
+      data = json.loads(jsonstr)
+      df = pd.DataFrame(data)
+      st.dataframe(df)
+      #st.json(car)
 
 
 def get_color(car_num):
@@ -80,6 +84,17 @@ def show_color():
   else:
     st.write("car not found")
 
-if __name__ == "__main__":
-    main()
 
+
+with st.container():
+  st.markdown(
+    """
+    <style>
+        body {
+            background-image: url("paper.gif");
+            background-color: #cccccc;
+        }
+    </style>
+    """
+    , unsafe_allow_html=True)
+  main()
