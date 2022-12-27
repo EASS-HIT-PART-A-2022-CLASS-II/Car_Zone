@@ -43,9 +43,9 @@ def main():
     ) 
 
   elif color_button:
-      if "car" not in st.session_state:
+    if "car" not in st.session_state:
         st.session_state.car = "4284078"
-      st.button(
+    st.button(
         "Get car color",
         on_click=get_color(st.session_state.car),
       )
