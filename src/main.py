@@ -29,39 +29,37 @@ def getprice(car:carReq):
 '''
 
 @app.post("/getcarsbymanyfacture",response_model=listOfCarRes,response_model_exclude_unset=True)
-def getlist(car:carReq):
+def getlist(car:carReq)->listOfCarRes:
     res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
-    json_obj=res.json()
-    for i in json_obj['result']['records']:
-        j=0
-        if ((i['tozeret_cd']==car.manifacture) & (i['degem_cd']==car.modle)):
-            j=j+1
-            cars = listOfCarRes(
-                id=j,
-                error_code=200,
-                error_massage="OK",
-                car=[
-                    carRes(
-                        id=i['_id'],
-                        mispar_rechev=i['mispar_rechev'],
-                        sug_degem =i['sug_degem'],
-                        degem_nm =i['degem_nm'],
-                        tozeret_nm =i['tozeret_nm'],
-                        tzeva_rechev =i['tzeva_rechev'],
-                        moed_aliya_lakvish =i['moed_aliya_lakvish'],
-                        error_code=200,
-                        error_massage="OK"
-                    )
-                ]
-            )
-            return cars
+    json_obj = res.json()
     cars = listOfCarRes(
-                id=000,
-                error_code=500,
-                error_massage="OK",
-                car=[] 
+        id=1,
+        error_code=200,
+        error_massage="OK",
+        car=[]
     )
-    return carRes
+    for i in json_obj['result']['records']:
+        if (i['tozeret_cd'] == car.manifacture) & (i['degem_cd'] == car.modle):
+            carinput = carRes(
+                id=i['_id'],
+                mispar_rechev=i['mispar_rechev'],
+                sug_degem=i['sug_degem'],
+                degem_nm=i['degem_nm'],
+                tozeret_nm=i['tozeret_nm'],
+                tzeva_rechev=i['tzeva_rechev'],
+                moed_aliya_lakvish=i['moed_aliya_lakvish'],
+                error_code=200,
+                error_massage="OK"
+            )
+            cars.car.append(carinput)
+    if not cars.car:
+        cars = listOfCarRes(
+            id=000,
+            error_code=500,
+            error_massage="OK",
+            car=[]
+        )    
+    return cars
 
 
 @app.get("/getcarcolor/{car_num}",response_model=carRes,response_model_exclude_unset=True)

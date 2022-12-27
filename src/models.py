@@ -20,7 +20,7 @@ class carRes(BaseModel):
 
 class listOfCarRes(BaseModel):
     id : int
-    car : Optional[List[carRes]]
+    car : List[carRes]
     error_code : int
     error_massage : str
 
