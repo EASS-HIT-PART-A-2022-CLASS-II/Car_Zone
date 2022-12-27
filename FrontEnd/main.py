@@ -91,8 +91,7 @@ with st.container():
     """
     <style>
         body {
-            background-image: url("paper.gif");
-            background-color: #cccccc;
+            background-color: #fffff;
         }
     </style>
     """
