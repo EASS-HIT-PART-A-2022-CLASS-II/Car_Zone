@@ -5,16 +5,16 @@ import json
 import pandas as pd
 
 def get_all_cars():
-  response =requests.get(f"http://localhost:8000/gatallcars")
+  response =requests.get(f"http://backend:8000/gatallcars")
   return response.json()
 
 def get_cars_by_manufacturer(manifacture: str, modle: str):
     data = {"manifacture": manifacture, "modle": modle}
-    response = requests.post("http://localhost:8000/getcarsbymanyfacture", json=data)
+    response = requests.post("http://backend:8000/getcarsbymanyfacture", json=data)
     return response.json()
 
 def get_car_color(car_num:str):
-  response = requests.get(f"http://localhost:8000/getcarcolor/{car_num}")
+  response = requests.get(f"http://backend:8000/getcarcolor/{car_num}")
   return response.json()
 
 

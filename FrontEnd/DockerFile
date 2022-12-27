@@ -4,8 +4,9 @@ WORKDIR /app/FrontEnd
 
 COPY . /app/FrontEnd
 
-RUN pip install requests streamlit pandas
+RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN pip install -r requirements.txt
 
-EXPOSE 8000
+EXPOSE 8501
 
-CMD ["streamlit", "run", "main.py"]
+CMD ["streamlit","run","main.py","--server.port", "8501"]
