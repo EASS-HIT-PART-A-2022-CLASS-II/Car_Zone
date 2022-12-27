@@ -10,7 +10,9 @@ services:
     networks:
       - cars-app-network
   frontend:
-    build: .
+    build: 
+      context: ./FrontEnd
+      dockerfile: DockerFile
     ports:
       - 8000:8000
     command: streamlit run main.py
