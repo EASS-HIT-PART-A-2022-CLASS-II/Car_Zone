@@ -34,12 +34,12 @@ def main():
 
   elif manufacturer_button:
     if "manifacture" not in st.session_state:
-        st.session_state.manifacture = "0413"
-        st.session_state.modle ="0871"
+      st.session_state.manifacture = "0413"
+      st.session_state.modle ="0871"
     st.button(
         "Get car",
         on_click=get_car_by,
-        args=([st.session_state.manifacture + " " + st.session_state.modle]),
+        args=([st.session_state.manifacture + " " + st.session_state.modle])
     ) 
 
   elif color_button:
@@ -50,6 +50,7 @@ def main():
         on_click=get_color(st.session_state.car),
       )
 
+    
 def get_car_by(car):
   with st.form(key="manifacture", clear_on_submit=True):
         col1, col2 = st.columns(2)
@@ -61,7 +62,7 @@ def get_car_by(car):
 
 def show_car():
     car = get_cars_by_manufacturer(st.session_state.manifacture,st.session_state.modle)
-    if car['car'][0]['error_code']:
+    if car['car'][1]['error_code']:
       jsonstr =json.dumps(car['car'])
       data = json.loads(jsonstr)
       df = pd.DataFrame(data)
