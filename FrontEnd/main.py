@@ -34,8 +34,8 @@ def main():
 
   elif manufacturer_button:
     if "manifacture" not in st.session_state:
-      st.session_state.manifacture = "0413"
-      st.session_state.modle ="0871"
+      st.session_state.manifacture = "0253"
+      st.session_state.modle ="0028"
     st.button(
         "Get car",
         on_click=get_car_by,
