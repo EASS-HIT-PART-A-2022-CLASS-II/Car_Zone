@@ -62,11 +62,11 @@ def get_car_by(car):
 
 def show_car():
     car = get_cars_by_manufacturer(st.session_state.manifacture,st.session_state.modle)
-    if car['car'][1]['error_code']:
-      jsonstr =json.dumps(car['car'])
-      data = json.loads(jsonstr)
-      df = pd.DataFrame(data)
-      st.dataframe(df)
+    #if car['car'][1]['error_code']:
+    jsonstr =json.dumps(car['car'])
+    data = json.loads(jsonstr)
+    df = pd.DataFrame(data)
+    st.dataframe(df)
       #st.json(car)
 
 
