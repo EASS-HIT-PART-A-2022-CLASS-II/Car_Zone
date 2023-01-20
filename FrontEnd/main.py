@@ -48,6 +48,7 @@ def main():
     st.button(
         "Get car color",
         on_click=get_color(st.session_state.car),
+        args=(st.session_state.car)
       )
 
     
@@ -62,7 +63,7 @@ def get_car_by(car):
 
 def show_car():
     car = get_cars_by_manufacturer(st.session_state.manifacture,st.session_state.modle)
-    #if car['car'][1]['error_code']:
+    #if car['car'][0]['error_code']:
     jsonstr =json.dumps(car['car'])
     data = json.loads(jsonstr)
     df = pd.DataFrame(data)
