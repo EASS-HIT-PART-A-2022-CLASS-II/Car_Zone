@@ -5,28 +5,13 @@ import requests
 
 app = FastAPI()
 
-''' TBD
-@app.get("/gatallcars",response_model=listOfCarRes,response_model_exclude_unset=True)
-def gatallcars():
-    res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
-    json_obj=res.json()
-    listOfCars : List[carRes] = [carRes(**car) for car in json_obj['result']['records']]
-    return listOfCars #json_obj['result']['records']
-'''
+
 @app.get("/gatallcars")
 def gatallcars():
     res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
     json_obj=res.json()
     return json_obj['result']['records']
 
-''' TBD
-@app.post("/getcarsby",response_model=listOfCarRes,response_model_exclude_unset=True)
-def getprice(car:carReq):
-    res=requests.get("http://data.gov.il/api/3/action/datastore_search?resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3")
-    json_obj=res.json()
-    listOfCars : List[carRes] = [carRes(**car) for car in json_obj]
-    return listOfCars
-'''
 
 @app.post("/getcarsbymanyfacture",response_model=listOfCarRes,response_model_exclude_unset=True)
 def getlist(car:carReq)->listOfCarRes:

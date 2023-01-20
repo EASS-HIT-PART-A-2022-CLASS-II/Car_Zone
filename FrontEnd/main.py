@@ -44,10 +44,11 @@ def main():
 
   elif color_button:
     if "car" not in st.session_state:
-        st.session_state.car = "4284078"
+        st.session_state.car = "1000132"
     st.button(
         "Get car color",
-        on_click=get_color(st.session_state.car)
+        on_click=get_color,
+        args=([st.session_state.car])
       )
 
     
@@ -71,7 +72,7 @@ def show_car():
 
 
 def get_color(car_num):
-      with st.form(key="car", clear_on_submit=True):
+      with st.form(key="car",clear_on_submit=True):
         col1 = st.columns(1)
         carcolor = col1[0].text_input("Enter car number", car_num, key="car")
         submit = st.form_submit_button(
