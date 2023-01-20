@@ -47,8 +47,7 @@ def main():
         st.session_state.car = "4284078"
     st.button(
         "Get car color",
-        on_click=get_color(st.session_state.car),
-        args=(st.session_state.car)
+        on_click=get_color(st.session_state.car)
       )
 
     
