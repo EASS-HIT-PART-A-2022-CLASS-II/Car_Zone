@@ -87,9 +87,8 @@ def show_color():
     st.write("car not found")
 
 
-
-with st.container():
-  st.markdown(
+st.set_page_config(page_title="Car Zone", page_icon=":guardsman:", layout="wide")
+st.markdown(
     """
     <style>
         body {
@@ -98,6 +97,11 @@ with st.container():
         }
     </style>
     """
-    , unsafe_allow_html=True)
+    , unsafe_allow_html=True) 
+
+
+with st.container():
   main()
+  
+ 
 
