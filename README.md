@@ -17,6 +17,7 @@ Israel dmv data
     git clone https://github.com/EASS-HIT-PART-A-2022-CLASS-II/Car_Zone.git <br />
 :large_orange_diamond: Then go inside the Car_Zone folder: <br />
     cd Car_Zone <br />
+:large_orange_diamond: Then go to the master branch: <br />
     git checkout master <br />
 :large_orange_diamond: To start the app, enter the following command: <br />
     docker compose up <br />
