@@ -88,20 +88,45 @@ def show_color():
 
 
 st.set_page_config(page_title="Car Zone", page_icon=":guardsman:", layout="wide")
-st.markdown(
+
+with st.container():
+  st.markdown(
     """
     <style>
-        body {
-            background-color: #fffff;
+        .block-container.css-18e3th9.egzxvld2 {
             background-image: url('https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top left;
+            opacity: 0.5;
+        }
+        .row-widget.stTextInput.css-11gchgc.edfmue0 {
+          color: #F5F5F5;
+        }
+        .css-81oif8.effi0qh3 {
+          color: #F5F5F5;
+        }
+        .css-1offfwp.e16nr0p34 {
+          color: #F5F5F5;
+        }
+        .css-184tjsw.e16nr0p34 {
+          color: #F5F5F5;
+        }
+        .css-629wbf.edgvbvh10 {
+          background-color: #808080;
+        }
+        .css-1x8cf1d.edgvbvh10 {
+          background-color: #808080;
+        }
+        .css-1x8cf1d.edgvbvh5 {
+          background-color: #808080;
         }
     </style>
     """
-    , unsafe_allow_html=True) 
-
-
-with st.container():
+    , unsafe_allow_html=True)
   main()
+
+
   
  
 
