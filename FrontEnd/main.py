@@ -94,7 +94,7 @@ with st.container():
     <style>
         body {
             background-color: #fffff;
-            background-image: url('C:/Car_zone_new/Car_Zone/FrontEnd/picture.jfif');
+            background-image: url('https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg');
         }
     </style>
     """
