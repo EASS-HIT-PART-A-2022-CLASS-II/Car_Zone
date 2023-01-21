@@ -94,8 +94,10 @@ with st.container():
     <style>
         body {
             background-color: #fffff;
+            background-image: url('C:/Car_zone_new/Car_Zone/FrontEnd/picture.jfif');
         }
     </style>
     """
     , unsafe_allow_html=True)
   main()
+
