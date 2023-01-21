@@ -20,5 +20,5 @@ Israel dmv data
 :large_orange_diamond: To start the app, enter the following command: <br />
     docker compose up <br />
 :large_orange_diamond: now all you have to do is to open your browser and type: <br />
-    http://localhost:8000/docs  
+    http://localhost:8501 
   
