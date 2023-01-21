@@ -19,15 +19,15 @@ Israel dmv data
 ```
 :large_orange_diamond: Then go inside the Car_Zone folder: <br />
 ```bash
-    cd Car_Zone <br />
+    cd Car_Zone
 ```
 :large_orange_diamond: Then go to the master branch: <br />
 ```bash
-    git checkout master <br />
+    git checkout master 
 ```
 :large_orange_diamond: To start the app, enter the following command: <br />
 ```bash
-    docker compose up <br />
+    docker compose up 
 ```
 :large_orange_diamond: now all you have to do is to open your browser and type: <br />
 ```bash
