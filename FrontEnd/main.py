@@ -3,6 +3,14 @@ import streamlit as st
 from streamlit import sidebar as sts
 import json
 import pandas as pd
+import pymongo
+
+clientdb = pymongo.MongoClient("mongodb+srv://reut201112:Reut8091746@carzone.zijsrlp.mongodb.net/cars")
+
+db = clientdb["cars_database"]
+
+collection = db["cars_collection"]
+
 
 def get_all_cars():
   response =requests.get(f"http://backend:8000/gatallcars")
@@ -82,7 +90,12 @@ def get_color(car_num):
 def show_color():
   res=get_car_color(st.session_state.car)
   if res['error_code']==200:
-    st.write(f"The color of the car is : {res['tzeva_rechev']}")
+    results = collection.find({"image_name": "black.jpg"})
+    photo=""
+    for result in results:
+       photo=result["image_url"]
+    
+    st.write(f"The color of the car is : {photo}")
   else:
     st.write("car not found")
 

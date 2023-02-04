@@ -6,6 +6,7 @@ WORKDIR /app
 COPY . /app/src
 COPY ./requierments.txt /app
 
+RUN /usr/local/bin/python pip install pymongo
 RUN pip3 install -r requierments.txt
 
 EXPOSE 8000
