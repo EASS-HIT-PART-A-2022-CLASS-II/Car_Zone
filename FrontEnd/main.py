@@ -42,8 +42,8 @@ def main():
 
   elif manufacturer_button:
     if "manifacture" not in st.session_state:
-      st.session_state.manifacture = "0253"
-      st.session_state.modle ="0028"
+      st.session_state.manifacture = "0481"
+      st.session_state.modle ="0652"
     st.button(
         "Get car",
         on_click=get_car_by,
@@ -52,7 +52,7 @@ def main():
 
   elif color_button:
     if "car" not in st.session_state:
-        st.session_state.car = "1000132"
+        st.session_state.car = "1000563"
     st.button(
         "Get car color",
         on_click=get_color,
@@ -90,13 +90,13 @@ def get_color(car_num):
 def show_color():
   res=get_car_color(st.session_state.car)
   if res['error_code']==200:
-    results = collection.find({"image_name": "black.jpg"})
+    results = collection.find({"image_heb": res['tzeva_rechev']})
     photo=""
     for result in results:
        photo=result["image_url"]
     
     st.write(f"The color of the car is :")
-    st.image(photo, width=100)
+    st.image(photo, width=200)
   else:
     st.write("car not found")
 
