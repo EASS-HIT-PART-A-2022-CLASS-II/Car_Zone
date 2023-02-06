@@ -95,7 +95,7 @@ def show_color():
     for result in results:
        photo=result["image_url"]
     
-    st.write(f"The color of the car is :")
+    st.write(f"The color of the car is :{res['tzeva_rechev']}" )
     st.image(photo, width=200)
   else:
     st.write("car not found")
