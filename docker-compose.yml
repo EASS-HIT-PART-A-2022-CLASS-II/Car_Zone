@@ -18,8 +18,9 @@ services:
     image: mongo:latest
     container_name: car-zone-db
     environment:
-      - MONGO_INITDB_DATABASE=cars
       - MONGO_INITDB_ROOT_USERNAME=reut201112
       - MONGO_INITDB_ROOT_PASSWORD=Reut8091746
+      - MONGO_REPLICA_HOST: host.docker.internal
+      - MONGO_REPLICA_PORT: 27017
     ports:
-      - 27017:27017
+      - '27017:27017'
