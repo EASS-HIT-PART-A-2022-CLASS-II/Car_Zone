@@ -6,7 +6,8 @@ import pandas as pd
 import pymongo
 
 ##clientdb = pymongo.MongoClient("mongodb+srv://reut201112:Reut8091746@carzone.zijsrlp.mongodb.net/cars")
-clientdb = pymongo.MongoClient("mongodb://reut201112:Reut8091746@localhost:27017/cars")
+clientdb = pymongo.MongoClient("mongodb://reut201112:Reut8091746@127.0.0.1:27017/cars")
+
 db = clientdb["cars_database"]
 
 collection = db["cars_collection"]
@@ -52,7 +53,7 @@ def main():
 
   elif color_button:
     if "car" not in st.session_state:
-        st.session_state.car = "1000563"
+        st.session_state.car = "1000268"
     st.button(
         "Get car color",
         on_click=get_color,
