@@ -14,4 +14,7 @@ services:
     ports:
       - 8501:8501
     container_name: car-zone-frontend
-
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017

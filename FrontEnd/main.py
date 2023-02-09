@@ -5,8 +5,8 @@ import json
 import pandas as pd
 import pymongo
 
-clientdb = pymongo.MongoClient("mongodb+srv://reut201112:Reut8091746@carzone.zijsrlp.mongodb.net/cars")
-
+##clientdb = pymongo.MongoClient("mongodb+srv://reut201112:Reut8091746@carzone.zijsrlp.mongodb.net/cars")
+clientdb = pymongo.MongoClient("mongodb://localhost:27017/")
 db = clientdb["cars_database"]
 
 collection = db["cars_collection"]
