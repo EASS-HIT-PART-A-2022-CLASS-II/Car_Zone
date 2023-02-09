@@ -23,8 +23,3 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=Reut8091746
     ports:
       - 27017:27017
-  python:
-    image: python:3.9-alpine
-    command: python
-    environment:
-      MONGO_URI: <Your MongoDB Atlas connection string>
