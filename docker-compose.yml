@@ -15,7 +15,16 @@ services:
       - 8501:8501
     container_name: car-zone-frontend
   mongodb:
-    image: mongo
+    image: mongo:latest
     container_name: car-zone-db
+    environment:
+      - MONGO_INITDB_DATABASE=cars
+      - MONGO_INITDB_ROOT_USERNAME=reut201112
+      - MONGO_INITDB_ROOT_PASSWORD=Reut8091746
     ports:
       - 27017:27017
+  python:
+    image: python:3.9-alpine
+    command: python
+    environment:
+      MONGO_URI: <Your MongoDB Atlas connection string>
