@@ -18,7 +18,7 @@ services:
     image: 'mongo'
     container_name: car-zone-db
     environment:
-      - MONGO_INITDB_DATABASE=cars_database
+      - MONGO_INITDB_DATABASE=cars
       - MONGO_INITDB_ROOT_USERNAME=reut201112
       - MONGO_INITDB_ROOT_PASSWORD=Reut8091746
     ports:
