@@ -41,7 +41,7 @@ def getlist(car:carReq)->listOfCarRes:
         cars = listOfCarRes(
             id=000,
             error_code=500,
-            error_massage="OK",
+            error_massage="internal error, cars not found",
             car=[]
         )    
     return cars
