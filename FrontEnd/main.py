@@ -5,10 +5,11 @@ import json
 import pandas as pd
 import pymongo
 
-#clientdb = pymongo.MongoClient("mongodb+srv://reut201112:Reut8091746@carzone.zijsrlp.mongodb.net/cars")
-clientdb = pymongo.MongoClient("mongodb://reut201112:Reut8091746@car-zone-db:27017/cars")
 
-db = clientdb["cars_database"]
+#clientdb = pymongo.MongoClient("mongodb+srv://reut201112:Reut8091746@carzone.zijsrlp.mongodb.net/cars")
+clientdb = pymongo.MongoClient("mongodb://mongodb:27017/cars")
+
+db = clientdb["cars"]
 
 collection = db["cars_collection"]
 
@@ -43,8 +44,8 @@ def main():
 
   elif manufacturer_button:
     if "manifacture" not in st.session_state:
-      st.session_state.manifacture = "0481"
-      st.session_state.modle ="0652"
+      st.session_state.manifacture = "0253"
+      st.session_state.modle ="0028"
     st.button(
         "Get car",
         on_click=get_car_by,

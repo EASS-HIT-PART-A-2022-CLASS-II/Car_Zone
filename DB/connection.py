@@ -1,10 +1,14 @@
 import pymongo
 
-client = pymongo.MongoClient("mongodb+srv://reut201112:Reut8091746@carzone.zijsrlp.mongodb.net/cars")
+# Connect to the MongoDB cluster using the SRV connection string
+#client = pymongo.MongoClient("mongodb+srv://reut201112:Reut8091746@carzone.zijsrlp.mongodb.net/cars")
+client = pymongo.MongoClient("mongodb://mongodb:27017/cars")
+# Get the `cars` database
+db = client["cars"]
 
-db = client["cars_database"]
-
+# Get the `cars` collection
 collection = db["cars_collection"]
+
 
 collection.insert_many([
     {

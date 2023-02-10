@@ -7,6 +7,18 @@ services:
     ports:
       - "8000:8000"
     container_name: car-zone-backend
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+  python:
+    build: 
+      context: ./DB
+      dockerfile: DockerFileDB
+    ports:
+      - "8001:8001"
+    links:
+      - mongodb
   frontend:
     build: 
       context: ./FrontEnd
@@ -14,13 +26,6 @@ services:
     ports:
       - 8501:8501
     container_name: car-zone-frontend
-  mongodb:
-    image: mongo:latest
-    container_name: car-zone-db
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=reut201112
-      - MONGO_INITDB_ROOT_PASSWORD=Reut8091746
-      - MONGO_REPLICA_HOST: host.docker.internal
-      - MONGO_REPLICA_PORT: 27017
-    ports:
-      - '27017:27017'
+    depends_on:
+      - mongodb
+  
