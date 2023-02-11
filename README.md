@@ -10,7 +10,7 @@ Israel dmv data
 
 ## Instractions
 ### Pre-requisites
-:large_orange_diamond:  Make sure you have docker installed on your machine
+:large_orange_diamond:  Make sure you have docker desktop, python 3.10 and git installed on your machine
 ### Instructions
 
 :large_orange_diamond: Open CMD/Terminal inside a desired folder and run the following command: <br />
